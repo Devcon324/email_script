@@ -23,8 +23,7 @@ class EmailSender(webapp2.RequestHandler):
     confirm_url = '%s://%s?user=%s' % (pr.scheme, pr.netloc, user.user_id())
 
     # load the email template and replace the placeholder with the confirm url
-    jinja_environment = jinja2.Environment(
-        loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
+    jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
     template = jinja_environment.get_template('mail_template.html')
     email_body = template.render({'confirm_url': confirm_url})
 
